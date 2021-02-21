@@ -1,32 +1,56 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Checkbox from '@material-ui/core/Checkbox';
+import Avatar from '@material-ui/core/Avatar';
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
     },
-});
-
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
+}));
 
 export default function TodoList({ todos }) {
     const classes = useStyles();
-    console.log(todos)
+    const [checked, setChecked] = React.useState([1]);
+
+    const handleToggle = (value) => () => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+
+        setChecked(newChecked);
+    };
 
     return (
-        <>
-            {todos.todoReducer.map(row => (
-                <h3>{row.text}</h3>
-            ))}
-        </>
+        <List dense className={classes.root}>
+            {todos.todoReducer.slice(0).reverse().map((row) => {
+                const labelId = `checkbox-list-secondary-label-${row.id}`;
+                return (
+                    <ListItem key={row.id} button>
+                        <ListItemText id={labelId} primary={row.text} />
+                        <ListItemSecondaryAction>
+                            <Checkbox
+                                edge="end"
+                            // onChange={handleToggle(row)}
+                            // checked={checked.indexOf(row) !== -1}
+                            // inputProps={{ 'aria-labelledby': labelId }}
+                            />
+                        </ListItemSecondaryAction>
+                    </ListItem>
+                );
+            })}
+        </List>
     );
 }
