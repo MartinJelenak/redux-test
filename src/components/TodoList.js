@@ -4,9 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
-import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,22 +14,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TodoList({ todos }) {
+export default function TodoList({ todos, toggleTodo }) {
     const classes = useStyles();
     const [checked, setChecked] = React.useState([1]);
 
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
+    // const handleToggle = (value) => () => {
 
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        setChecked(newChecked);
-    };
+    // };
 
     return (
         <List dense className={classes.root}>
@@ -43,7 +32,7 @@ export default function TodoList({ todos }) {
                         <ListItemSecondaryAction>
                             <Checkbox
                                 edge="end"
-                            // onChange={handleToggle(row)}
+                                onChange={() => toggleTodo(row.id)}
                             // checked={checked.indexOf(row) !== -1}
                             // inputProps={{ 'aria-labelledby': labelId }}
                             />
