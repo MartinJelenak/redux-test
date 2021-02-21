@@ -23,10 +23,14 @@ function TaskMaker({ dispatch }) {
                 value={input}
             />
             <Button variant="contained" color="primary" disableElevation size="large"
-                onClick={e => { dispatch(todoMakeA(input)) }}>
+                onClick={e => {
+                    dispatch(todoMakeA(input))
+                    input = ''
+                }
+                }>
                 Add todo
-    </Button>
-        </div>
+            </Button>
+        </div >
     )
 }
 
