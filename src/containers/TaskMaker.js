@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useRef } from "react";
 import { connect } from 'react-redux'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { todoMakeA } from '../redux/actions'
 
-let input
 
-function TaskMaker({ dispatch }) {
+
+const TaskMaker = ({ dispatch }) => {
+    let input
+    let textInput = useRef(null)
+
     return (
         <div>
             <TextField
@@ -14,6 +17,7 @@ function TaskMaker({ dispatch }) {
                 label="Todo"
                 type="text"
                 variant="outlined"
+                inputRef={textInput}
                 onChange={e => {
                     e.preventDefault()
                     input = e.target.value
@@ -22,10 +26,14 @@ function TaskMaker({ dispatch }) {
                 }}
                 value={input}
             />
-            <Button variant="contained" color="primary" disableElevation size="large"
+            <Button
+                variant="contained"
+                color="primary"
+                disableElevation
+                size="large"
                 onClick={e => {
                     dispatch(todoMakeA(input))
-                    input = ''
+                    textInput.current.value = ""
                 }
                 }>
                 Add todo
