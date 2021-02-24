@@ -27,7 +27,7 @@ export default function TodoList({ todos, toggleTodo, sectionName }) {
         case 0:
             return (
                 <div className={classes.div}>
-                    <h3 className={classes.div}>No task in {sectionName} sections yet!</h3>
+                    <h3 className={classes.div}>No task in {filter} sections yet!</h3>
                 </div>
             )
         default:

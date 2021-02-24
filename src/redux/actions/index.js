@@ -21,8 +21,3 @@ export const visibilityFilters = {
     SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
-const sectionName = {
-    SHOW_ALL: ['SHOW_ALL', 'ALL'],
-    SHOW_COMPLETED: ['SHOW_COMPLETED', 'COMPLETED'],
-    SHOW_ACTIVE: ['SHOW_ACTIVE', 'ACTIVE']
-}
