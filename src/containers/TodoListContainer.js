@@ -5,6 +5,17 @@ import { visibilityFilters } from '../redux/actions'
 // import _ from 'lodash';
 
 
+const setSectionName = filter => {
+    switch (filter) {
+        case visibilityFilters.SHOW_ALL:
+            return 'ALL'
+        case visibilityFilters.SHOW_COMPLETED:
+            return 'COMPLETED'
+        case visibilityFilters.SHOW_ACTIVE:
+            return 'ACTIVE'
+    }
+}
+
 const getVisibleTodos = (todos, filter) => {
     // console.log(todos.filter(t => (
     //     t.completed
@@ -22,7 +33,8 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 const mapStateToProps = state => ({
-    todos: getVisibleTodos(state.todos, state.todoListFilter)
+    todos: getVisibleTodos(state.todos, state.todoListFilter),
+    sectionName: setSectionName(state.todoListFilter)
 })
 
 const mapDispatchToProps = dispatch => ({
