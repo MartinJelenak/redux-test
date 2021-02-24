@@ -1,45 +1,32 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
+import Todo from './Todo';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        maxWidth: 360,
+        maxWidth: 'auto',
         backgroundColor: theme.palette.background.paper,
     },
 }));
 
 export default function TodoList({ todos, toggleTodo }) {
     const classes = useStyles();
-    const [checked, setChecked] = React.useState([1]);
-
-    // const handleToggle = (value) => () => {
-
-    // };
+    console.log(todos)
 
     return (
         <List dense className={classes.root}>
-            {todos.todoReducer.slice(0).reverse().map((row) => {
-                const labelId = `checkbox-list-secondary-label-${row.id}`;
+            {todos.slice(0).reverse().map(row => {
                 return (
-                    <ListItem key={row.id} button>
-                        <ListItemText id={labelId} primary={row.text} />
-                        <ListItemSecondaryAction>
-                            <Checkbox
-                                edge="end"
-                                onChange={() => toggleTodo(row.id)}
-                            // checked={checked.indexOf(row) !== -1}
-                            // inputProps={{ 'aria-labelledby': labelId }}
-                            />
-                        </ListItemSecondaryAction>
-                    </ListItem>
-                );
+                    <Todo
+                        key={row.id}
+                        {...row}
+                        onClick={() => toggleTodo(row.id)}
+                    />
+                )
             })}
         </List>
     );
 }
+
