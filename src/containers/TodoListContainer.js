@@ -17,9 +17,6 @@ const setSectionName = filter => {
 }
 
 const getVisibleTodos = (todos, filter) => {
-    // console.log(todos.filter(t => (
-    //     t.completed
-    // )), 'filter')
     switch (filter) {
         case visibilityFilters.SHOW_ALL:
             return todos
