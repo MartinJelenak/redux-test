@@ -1,67 +1,3 @@
-// import React, { useRef, useState } from "react";
-// import { connect } from 'react-redux'
-// import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
-// import { todoMakeA } from '../redux/actions'
-
-
-
-// const TaskMaker = ({ dispatch }) => {
-//     const [err, setErr] = useState(false)
-//     let input
-//     let textInput = useRef(null)
-
-//     const cilickHandle = () => {
-//         console.log(input)
-//         if (input != undefined && input != '') {
-//             dispatch(todoMakeA(input))
-//             textInput.current.value = ""
-//             input = ''
-//             setErr(false)
-//         } else {
-//             setErr(true)
-//         }
-//     }
-
-//     return (
-//         <div>
-// <TextField
-//     error={err}
-//     id="outlined-todo-input"
-//     label="Todo"
-//     type="text"
-//     variant="outlined"
-//     inputRef={textInput}
-//     size="small"
-//     onChange={e => {
-//         e.preventDefault()
-//         input = e.target.value
-//         console.log(input)
-
-//     }}
-//     value={input}
-// />
-//             <div>
-//                 <Button
-//                     variant="contained"
-//                     color="primary"
-//                     disableElevation
-//                     size="large"
-//                     onClick={e => {
-//                         cilickHandle()
-//                     }
-//                     }>
-//                     Add todo
-//             </Button>
-//             </div>
-//         </div >
-//     )
-// }
-
-// export default connect()(TaskMaker)
-//---------------------------------------------------------------------
-
-
 import React, { useRef, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -74,6 +10,7 @@ import DirectionsIcon from '@material-ui/icons/Directions';
 import { todoMakeA } from '../redux/actions'
 import { connect } from 'react-redux'
 import { Button, TextField } from "@material-ui/core";
+
 
 
 
@@ -96,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
         height: 28,
         margin: 4,
     },
+    margin: {
+        margin: '15px 0px 0px 0px'
+    }
 }));
 
 const TaskMaker = ({ dispatch }) => {
@@ -116,21 +56,8 @@ const TaskMaker = ({ dispatch }) => {
         }
     }
     return (
-        <div className={classes.root}>
+        <form>
             <div className={classes.root}>
-                {/* <InputBase
-                    error={err}
-                    className={classes.input}
-                    inputProps={{ 'aria-label': 'search google maps' }}
-                    inputRef={input}
-                    onChange={e => {
-                        e.preventDefault()
-                        input = e.target.value
-                        console.log(input)
-
-                    }}
-                    value={input}
-                /> */}
                 <TextField
                     label="Size"
                     id="outlined-size-small"
@@ -150,19 +77,21 @@ const TaskMaker = ({ dispatch }) => {
             </div>
             <div className={classes.root}>
                 <Button
+                    className={classes.margin}
+                    type="submit"
                     fullWidth
                     variant="contained"
                     color="primary"
-                    disableElevation
                     size="large"
                     onClick={e => {
+                        e.preventDefault()
                         cilickHandle()
                     }
                     }>
                     Add
             </Button>
             </div>
-        </div>
+        </form>
     );
 }
 

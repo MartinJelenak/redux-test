@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         maxWidth: 'auto',
-        backgroundColor: theme.palette.background.paper,
     },
 }));
 

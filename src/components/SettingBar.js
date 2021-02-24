@@ -10,19 +10,20 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyItems: 'center',
-        margin: '20px 0px 5px 0px'
+        margin: '20px 0px 5px 0px',
+        padding: '0px 5px 0px 5px'
     }
 }));
 
 export default function SettingBar() {
     const classes = useStyles();
     return (
-        // <Paper component="form" className={classes.root}>
-        <ButtonGroup disableElevation variant="contained" color="primary" className={classes.root} component={Button} fullWidth>
-            <ButtonContainer filter={visibilityFilters.SHOW_ALL}>ALL</ButtonContainer>
-            <ButtonContainer filter={visibilityFilters.SHOW_ACTIVE}>ACTIVE</ButtonContainer>
-            <ButtonContainer filter={visibilityFilters.SHOW_COMPLETED}>COMPLETED</ButtonContainer>
-        </ButtonGroup>
-        // </Paper >
+        <>
+            <ButtonGroup disableElevation variant="contained" color="primary" fullwidth className={classes.root}>
+                <ButtonContainer filter={visibilityFilters.SHOW_ALL}>ALL</ButtonContainer>
+                <ButtonContainer filter={visibilityFilters.SHOW_ACTIVE}>ACTIVE</ButtonContainer>
+                <ButtonContainer filter={visibilityFilters.SHOW_COMPLETED}>COMPLETED</ButtonContainer>
+            </ButtonGroup>
+        </>
     )
 }
