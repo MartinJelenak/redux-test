@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-import { toggleTodo } from '../redux/actions'
 import TodoList from '../components/TodoList'
-import { visibilityFilters } from '../redux/actions'
+import { visibilityFilters, toggleTodo, editDialogChange } from '../redux/actions'
 // import _ from 'lodash';
 
 
@@ -31,11 +30,13 @@ const getVisibleTodos = (todos, filter) => {
 
 const mapStateToProps = state => ({
     todos: getVisibleTodos(state.todos, state.todoListFilter),
-    sectionName: setSectionName(state.todoListFilter)
+    sectionName: setSectionName(state.todoListFilter),
+    // setDialogVisible:  
 })
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: id => dispatch(toggleTodo(id))
+    toggleTodo: id => dispatch(toggleTodo(id)),
+    editDialogChange: (id, newText) => dispatch(editDialogChange(id, newText))
 })
 
 export default connect(

@@ -5,6 +5,6 @@ import todoListFilter from './reducers/todoListFilter';
 export default configureStore({
   reducer: {
     todos,
-    todoListFilter
+    todoListFilter,
   },
 });

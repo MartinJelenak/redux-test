@@ -16,6 +16,12 @@ const todos = (state = [], action) => {
                     ? { ...todo, completed: !todo.completed }
                     : todo
             )
+        case 'EDIT_TEXT':
+            return state.map(todo =>
+                (todo.id === action.id)
+                    ? { ...todo, text: action.newText }
+                    : todo
+            )
         default:
             return state
     }

@@ -4,7 +4,6 @@ import Button from '../components/Buttons'
 
 const mapStateToProps = (state, ownProps) => ({
     active: ownProps.filter == state.todoListFilter
-    // active: console.log(ownProps, 'button')
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

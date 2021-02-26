@@ -52,7 +52,7 @@ const TaskMaker = ({ dispatch }) => {
         <form>
             <div className={classes.root}>
                 <TextField
-                    label="Size"
+                    label="Todo"
                     id="outlined-size-small"
                     defaultValue=""
                     variant="outlined"

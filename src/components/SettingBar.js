@@ -19,7 +19,7 @@ export default function SettingBar() {
     const classes = useStyles();
     return (
         <>
-            <ButtonGroup disableElevation variant="contained" color="primary" fullwidth className={classes.root}>
+            <ButtonGroup disableElevation variant="contained" color="primary" className={classes.root}>
                 <ButtonContainer filter={visibilityFilters.SHOW_ALL}>ALL</ButtonContainer>
                 <ButtonContainer filter={visibilityFilters.SHOW_ACTIVE}>ACTIVE</ButtonContainer>
                 <ButtonContainer filter={visibilityFilters.SHOW_COMPLETED}>COMPLETED</ButtonContainer>

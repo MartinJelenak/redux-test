@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function TodoList({ todos, toggleTodo, sectionName }) {
+export default function TodoList({ todos, toggleTodo, sectionName, editDialogChange }) {
     const classes = useStyles();
     console.log(todos)
 
@@ -27,7 +27,7 @@ export default function TodoList({ todos, toggleTodo, sectionName }) {
         case 0:
             return (
                 <div className={classes.div}>
-                    <h3 className={classes.div}>No task in {sectionName} sections yet!</h3>
+                    <h3 className={classes.div}>No task in {sectionName} section yet!</h3>
                 </div>
             )
         default:
@@ -39,6 +39,8 @@ export default function TodoList({ todos, toggleTodo, sectionName }) {
                                 key={row.id}
                                 {...row}
                                 onClick={() => toggleTodo(row.id)}
+                                // editDialog={editDialog}
+                                editDialogChange={editDialogChange}
                             />
                         )
                     })}

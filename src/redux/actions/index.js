@@ -21,3 +21,8 @@ export const visibilityFilters = {
     SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
+export const editDialogChange = (id, newText) => ({
+    type: 'EDIT_TEXT',
+    id,
+    newText
+})
